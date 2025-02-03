@@ -10,6 +10,17 @@ export const responsiveProperties = defineProperties({
   },
   defaultCondition: 'mobile',
   properties: {
+    position: ['absolute', 'sticky'],
+    display: ['flex'],
+    alignItems: ['center'],
+    justifyContent: ['center'],
+    overflow: ['hidden'],
+    width: {
+      full: '100%',
+    },
+    height: {
+      full: '100%',
+    },
     typography: {
       heading1: createTypography({ size: 26, lineHeight: 'large', weight: 'bold' }),
       heading2: createTypography({ size: 24, lineHeight: 'large', weight: 'bold' }),
