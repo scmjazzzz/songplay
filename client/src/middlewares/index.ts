@@ -1,1 +1,2 @@
-export * from './home-redirect'
+export * from './device-check'
+export * from './root-redirect'
