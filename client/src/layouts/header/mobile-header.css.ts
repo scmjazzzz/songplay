@@ -12,7 +12,7 @@ export const header = style([
     backgroundColor: 'paper_default',
   }),
   {
-    height: vars.mobile_header_height,
+    height: vars.base.mobile_header_height,
   },
 ])
 

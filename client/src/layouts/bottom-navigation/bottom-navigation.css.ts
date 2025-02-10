@@ -9,7 +9,7 @@ export const nav = style([
     backgroundColor: 'paper_default',
   }),
   {
-    height: vars.bottom_navigation_height,
+    height: vars.base.bottom_navigation_height,
   },
 ])
 
