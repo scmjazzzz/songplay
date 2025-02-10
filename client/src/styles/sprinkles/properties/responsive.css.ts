@@ -10,9 +10,15 @@ export const responsiveProperties = defineProperties({
   },
   defaultCondition: 'mobile',
   properties: {
+    position: ['absolute', 'sticky'],
     display: ['flex'],
+    alignItems: ['center'],
+    justifyContent: ['center'],
     flexDirection: ['column'],
     width: {
+      full: '100%',
+    },
+    height: {
       full: '100%',
     },
     borderStyle: ['solid'],
