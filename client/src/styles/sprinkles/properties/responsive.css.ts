@@ -1,5 +1,5 @@
 import { defineProperties } from '@vanilla-extract/sprinkles'
-import { createTypography, media } from '@/styles/utils'
+import { createTransition, createTypography, media } from '@/styles/utils'
 import { vars } from '@/styles/vars.css'
 
 export const responsiveProperties = defineProperties({
@@ -10,6 +10,12 @@ export const responsiveProperties = defineProperties({
   },
   defaultCondition: 'mobile',
   properties: {
+    width: {
+      full: '100%',
+    },
+    transition: {
+      backgroundColor: createTransition({ properties: 'background-color', duration: '.15s', timingFunction: 'ease' }),
+    },
     typography: {
       heading1: createTypography({ size: 26, lineHeight: 'large', weight: 'bold' }),
       heading2: createTypography({ size: 24, lineHeight: 'large', weight: 'bold' }),

@@ -50,13 +50,24 @@ const paper = {
   },
 }
 
+const status = {
+  light: {
+    primary_hover: light.orange_700,
+  },
+  dark: {
+    primary_hover: dark.orange_400,
+  },
+}
+
 export const semantic = {
   light: {
     ...variant.light,
     ...paper.light,
+    ...status.light,
   },
   dark: {
     ...variant.dark,
     ...paper.dark,
+    ...status.dark,
   },
 }
