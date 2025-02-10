@@ -4,4 +4,5 @@ export const ROUTES = {
   SEARCH: '/search',
   WRITE: '/write',
   PROFILE: '/profile',
+  SETTING: '/setting',
 } as const

@@ -3,7 +3,7 @@ import { transformVariableName } from '../utils'
 import { border, space, typography, base } from '../tokens'
 
 const rootTokens = {
-  ...base,
+  base,
   space,
   border,
   typography,
