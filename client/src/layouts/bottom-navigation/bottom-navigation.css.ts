@@ -6,6 +6,7 @@ export const nav = style([
   sprinkles({
     position: 'sticky',
     bottom: 0,
+    backgroundColor: 'paper_default',
   }),
   {
     height: vars.bottom_navigation_height,

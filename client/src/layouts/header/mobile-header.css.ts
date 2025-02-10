@@ -9,6 +9,7 @@ export const header = style([
     justifyContent: 'center',
     position: 'sticky',
     top: 0,
+    backgroundColor: 'paper_default',
   }),
   {
     height: vars.mobile_header_height,
@@ -17,6 +18,7 @@ export const header = style([
 
 export const heading = sprinkles({
   typography: 'heading3',
+  color: 'text_default',
 })
 
 export const side = recipe({
