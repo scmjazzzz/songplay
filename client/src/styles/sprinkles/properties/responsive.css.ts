@@ -22,6 +22,9 @@ export const responsiveProperties = defineProperties({
     height: {
       full: '100%',
     },
+    minHeight: {
+      screen: '100vh',
+    },
     borderStyle: ['solid'],
     transition: {
       backgroundColor: createTransition({ properties: 'background-color', duration: '.15s', timingFunction: 'ease' }),

@@ -7,4 +7,5 @@ globalStyle('html', {
 
 globalStyle('html, body', {
   backgroundColor: vars.color.paper_default,
+  height: '100%',
 })

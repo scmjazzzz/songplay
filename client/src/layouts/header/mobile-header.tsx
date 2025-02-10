@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react'
 import { header, heading, side } from './mobile-header.css'
 
-type Props = {
+export type MobileHeaderProps = {
   left?: ReactNode
   right?: ReactNode
 }
 
-export function MobileHeader({ left, right }: Props) {
+export function MobileHeader({ left, right }: MobileHeaderProps) {
   return (
     <header className={header}>
       <strong className={heading}>songplay</strong>
