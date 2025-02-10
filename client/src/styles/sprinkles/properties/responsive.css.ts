@@ -13,8 +13,10 @@ export const responsiveProperties = defineProperties({
     width: {
       full: '100%',
     },
+    borderStyle: ['solid'],
     transition: {
       backgroundColor: createTransition({ properties: 'background-color', duration: '.15s', timingFunction: 'ease' }),
+      borderColor: createTransition({ properties: 'border-color', duration: '.15s', timingFunction: 'ease' }),
     },
     typography: {
       heading1: createTypography({ size: 26, lineHeight: 'large', weight: 'bold' }),

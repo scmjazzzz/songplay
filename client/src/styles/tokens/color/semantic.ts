@@ -53,9 +53,30 @@ const paper = {
 const status = {
   light: {
     primary_hover: light.orange_700,
+    default_placeholder: light.gray_500,
+    default_disabled: light.gray_100,
+    default_border_focus: light.gray_900,
   },
   dark: {
     primary_hover: dark.orange_400,
+    default_placeholder: dark.gray_600,
+    default_disabled: dark.gray_100,
+    default_border_focus: dark.gray_600,
+  },
+}
+
+const base = {
+  light: {
+    text_default: light.gray_900,
+    border_default: light.gray_400,
+    border_danger: light.red_300,
+    danger_background: light.red_alpha_100,
+  },
+  dark: {
+    text_default: dark.gray_900,
+    border_default: dark.gray_400,
+    border_danger: dark.red_100,
+    danger_background: dark.red_alpha_100,
   },
 }
 
@@ -64,10 +85,12 @@ export const semantic = {
     ...variant.light,
     ...paper.light,
     ...status.light,
+    ...base.light,
   },
   dark: {
     ...variant.dark,
     ...paper.dark,
     ...status.dark,
+    ...base.dark,
   },
 }
