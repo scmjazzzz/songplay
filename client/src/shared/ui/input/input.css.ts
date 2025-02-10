@@ -11,7 +11,7 @@ export const input = recipe({
     variant: {
       outlined: sprinkles({
         borderWidth: 1,
-        borderRadius: 4,
+        borderRadius: 6,
         borderStyle: 'solid',
         transition: 'borderColor',
       }),
