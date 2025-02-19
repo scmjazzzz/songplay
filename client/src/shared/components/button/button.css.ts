@@ -44,4 +44,4 @@ export const button = recipe({
   },
 })
 
-export type ButtonVariants = RecipeVariants<typeof button>
+export type ButtonVariants = NonNullable<RecipeVariants<typeof button>>
