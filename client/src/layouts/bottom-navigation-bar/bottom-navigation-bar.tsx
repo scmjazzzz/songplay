@@ -1,13 +1,13 @@
 'use client'
 
 import { createElement } from 'react'
-import { Feed, Profile, Search, Shorts, Write } from '@/shared/components/icon'
+import { Home, Profile, Search, Shorts, Write } from '@/shared/components/icon'
 import { ActiveLink } from '@/shared/components/active-link'
 import { ROUTES } from '@/shared/constants/routes'
 import { link, list, nav, svgIcon, text, ul } from './bottom-navigation-bar.css'
 
 const navigationList = [
-  { href: ROUTES.FEED, name: 'Feed', icon: Feed },
+  { href: ROUTES.HOME, name: 'Home', icon: Home },
   { href: ROUTES.SHORTS, name: 'Shorts', icon: Shorts },
   { href: ROUTES.SEARCH, name: '검색', icon: Search },
   { href: ROUTES.WRITE, name: '등록', icon: Write },
