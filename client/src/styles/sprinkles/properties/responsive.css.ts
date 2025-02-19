@@ -11,6 +11,8 @@ export const responsiveProperties = defineProperties({
   },
   defaultCondition: 'mobile',
   properties: {
+    display: ['flex'],
+    flexDirection: ['column'],
     width: {
       full: '100%',
     },
