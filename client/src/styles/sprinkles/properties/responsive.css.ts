@@ -17,9 +17,20 @@ export const responsiveProperties = defineProperties({
     height: {
       full: '100%',
     },
+    borderStyle: ['solid'],
     transition: {
       backgroundColor: createTransition({
         properties: 'background-color',
+        duration: '.15s',
+        timingFunction: 'ease',
+      }),
+      borderColor: createTransition({
+        properties: 'border-color',
+        duration: '.15s',
+        timingFunction: 'ease',
+      }),
+      backgroundAndBorderColor: createTransition({
+        properties: ['background-color', 'border-color'],
         duration: '.15s',
         timingFunction: 'ease',
       }),

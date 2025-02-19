@@ -1,8 +1,8 @@
-type TransitionProperties = 'background-color'
+type TransitionProperties = 'background-color' | 'border-color'
 type TimingFunction = 'ease'
 
 type CreateTransition = {
-  properties: TransitionProperties
+  properties: TransitionProperties | TransitionProperties[]
   duration: string
   timingFunction: TimingFunction
   delay?: string
