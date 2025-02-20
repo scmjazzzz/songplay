@@ -7,7 +7,7 @@ export const container = sprinkles({
   minHeight: 'screen',
 })
 
-export const contents = sprinkles({
+export const content = sprinkles({
   display: 'flex',
   flex: 1,
 })
