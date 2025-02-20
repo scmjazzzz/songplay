@@ -18,7 +18,7 @@ export const header = style([
 ])
 
 export const heading = sprinkles({
-  typography: 'heading3',
+  typography: 'heading4',
   color: 'default_text',
 })
 
