@@ -4,10 +4,10 @@ import { container, main } from '../mobile-layout.css'
 
 export type Props = (Omit<MobileHeaderProps, 'left'> & { isHeader?: true }) | { isHeader?: false }
 
-export function BackNavigationLayout({ isHeader = true, children }: PropsWithChildren<Props>) {
+export function BackNavigationLayout({ isHeader = true, children, ...props }: PropsWithChildren<Props>) {
   return (
     <div className={container}>
-      {isHeader && <MobileHeader left={<HeaderBackButton />} />}
+      {isHeader && <MobileHeader left={<HeaderBackButton />} {...props} />}
       <main className={main}>{children}</main>
     </div>
   )

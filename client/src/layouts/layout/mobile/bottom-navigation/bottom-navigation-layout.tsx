@@ -5,10 +5,10 @@ import { container, main } from '../mobile-layout.css'
 
 export type Props = (MobileHeaderProps & { isHeader?: true }) | { isHeader?: false }
 
-export function BottomNavigationLayout({ isHeader = true, children }: PropsWithChildren<Props>) {
+export function BottomNavigationLayout({ isHeader = true, children, ...props }: PropsWithChildren<Props>) {
   return (
     <div className={container}>
-      {isHeader && <MobileHeader />}
+      {isHeader && <MobileHeader {...props} />}
       <main className={main}>{children}</main>
       <BottomNavigationBar />
     </div>
