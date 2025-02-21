@@ -15,6 +15,7 @@ export const responsiveProperties = defineProperties({
     flexDirection: ['column'],
     alignItems: ['center'],
     justifyContent: ['center', 'space-between'],
+    justifySelf: ['center'],
     flex: [1],
     position: ['sticky', 'absolute'],
     width: {
@@ -22,6 +23,9 @@ export const responsiveProperties = defineProperties({
     },
     height: {
       full: '100%',
+    },
+    maxWidth: {
+      form: '500px',
     },
     minHeight: {
       screen: '100vh',
