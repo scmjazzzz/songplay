@@ -26,6 +26,8 @@ export const responsiveProperties = defineProperties({
     minHeight: {
       screen: '100vh',
     },
+    textAlign: ['center'],
+    textDecoration: ['underline'],
     borderStyle: ['solid'],
     transition: {
       backgroundColor: createTransition({
@@ -68,6 +70,9 @@ export const responsiveProperties = defineProperties({
     fontSize: vars.typography.font_size,
     fontWeight: vars.typography.font_weight,
     lineHeight: vars.typography.line_height,
+    spacing: {
+      all: { paddingTop: 12, paddingLeft: 12, paddingRight: 12, paddingBottom: 30 },
+    },
   },
   shorthands: {
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
