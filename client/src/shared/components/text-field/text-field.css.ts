@@ -7,7 +7,7 @@ export const container = sprinkles({
 
 export const heading = sprinkles({
   paddingBottom: 8,
-  fontSize: 18,
+  fontSize: 16,
   fontWeight: 'bold',
   lineHeight: 'medium',
 })
