@@ -13,7 +13,7 @@ export function Form({ children, footer, sx, className, ...props }: PropsWithChi
   return (
     <Box as="form" sx={sx} className={classNames(form, className)} {...props}>
       <div className={content}>{children}</div>
-      {footer && <div className={bottom}></div>}
+      {footer && <div className={bottom}>{footer}</div>}
     </Box>
   )
 }
