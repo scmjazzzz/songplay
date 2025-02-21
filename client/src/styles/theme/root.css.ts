@@ -9,8 +9,6 @@ const rootTokens = {
   typography,
 }
 
-export const rootVars = createGlobalThemeContract(rootTokens, (_, path) =>
-  transformVariableName(path),
-)
+export const rootVars = createGlobalThemeContract(rootTokens, (_, path) => transformVariableName(path))
 
 createGlobalTheme(':root', rootVars, rootTokens)
