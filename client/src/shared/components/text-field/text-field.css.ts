@@ -10,6 +10,7 @@ export const heading = sprinkles({
   fontSize: 16,
   fontWeight: 'bold',
   lineHeight: 'medium',
+  color: 'default_text',
 })
 
 export const error = sprinkles({
