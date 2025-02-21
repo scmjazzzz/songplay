@@ -9,7 +9,7 @@ export function BottomNavigationLayout({ isHeader = true, children, ...props }: 
   return (
     <div className={container}>
       {isHeader && <MobileHeader {...props} />}
-      <main className={main}>{children}</main>
+      <main className={main({ layout: 'bottomNavigation' })}>{children}</main>
       <BottomNavigationBar />
     </div>
   )

@@ -8,7 +8,7 @@ export function BackNavigationLayout({ isHeader = true, children, ...props }: Pr
   return (
     <div className={container}>
       {isHeader && <MobileHeader left={<HeaderBackButton />} {...props} />}
-      <main className={main}>{children}</main>
+      <main className={main({ layout: 'backNavigation' })}>{children}</main>
     </div>
   )
 }

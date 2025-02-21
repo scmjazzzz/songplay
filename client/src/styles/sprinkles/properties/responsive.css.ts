@@ -23,6 +23,7 @@ export const responsiveProperties = defineProperties({
     },
     height: {
       full: '100%',
+      inherit: 'inherit',
     },
     maxWidth: {
       form: '500px',
