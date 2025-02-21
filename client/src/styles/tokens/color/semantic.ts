@@ -53,6 +53,7 @@ const paper = {
 const status = {
   light: {
     primary_hover: light.orange_700,
+    primary_disabled: light.orange_400,
     default_after_primary_hover: light.orange_50,
     default_placeholder: light.gray_500,
     default_disabled: light.gray_100,
@@ -60,6 +61,7 @@ const status = {
   },
   dark: {
     primary_hover: dark.orange_400,
+    primary_disabled: dark.orange_200,
     default_after_primary_hover: dark.orange_alpha_100,
     default_placeholder: dark.gray_600,
     default_disabled: dark.gray_100,

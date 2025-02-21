@@ -31,6 +31,7 @@ export const button = recipe({
         backgroundColor: {
           default: 'primary',
           hover: 'primary_hover',
+          disabled: 'primary_disabled',
         },
         color: 'white',
       }),
