@@ -1,7 +1,7 @@
 import { Button } from '@/shared/components/button'
 import { Link } from '@/shared/components/link'
-import { description, error, link } from './auth-action.css'
 import { ROUTES } from '@/shared/constants/routes'
+import { actions, description, error, link } from './auth-action.css'
 
 type Props = {
   mode: 'register' | 'login'
@@ -13,13 +13,13 @@ const descriptionMap = {
   register: {
     actionName: '회원가입',
     question: '계정이 이미 있으신가요?',
-    questionLink: ROUTES.REGISTER,
+    questionLink: ROUTES.LOGIN,
     questionLinkName: '로그인',
   },
   login: {
     actionName: '로그인',
     question: '계정이 없으신가요?',
-    questionLink: ROUTES.LOGIN,
+    questionLink: ROUTES.REGISTER,
     questionLinkName: '회원가입',
   },
 }
@@ -28,7 +28,7 @@ export function AuthAction({ mode, disabled, errorMessage }: Props) {
   const { actionName, question, questionLink, questionLinkName } = descriptionMap[mode]
 
   return (
-    <div>
+    <div className={actions}>
       {errorMessage && <p className={error}>{errorMessage}</p>}
       <Button type="submit" disabled={disabled} mode="full" size="large">
         {actionName}

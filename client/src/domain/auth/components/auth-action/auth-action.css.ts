@@ -1,5 +1,9 @@
 import { sprinkles } from '@/styles/sprinkles'
 
+export const actions = sprinkles({
+  paddingTop: 50,
+})
+
 export const error = sprinkles({
   paddingBottom: 10,
   fontSize: 14,

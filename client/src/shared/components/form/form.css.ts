@@ -5,14 +5,3 @@ export const form = sprinkles({
   flexDirection: 'column',
   height: 'full',
 })
-
-export const content = sprinkles({
-  display: 'flex',
-  flexDirection: 'column',
-  flex: 1,
-  gap: 12,
-})
-
-export const bottom = sprinkles({
-  paddingTop: 20,
-})
