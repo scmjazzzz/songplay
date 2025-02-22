@@ -65,7 +65,7 @@ export class AuthService {
     const SALT_ROUNDS = this.configService.get<string>(ENV_SALT_ROUNDS)
 
     if (!SALT_ROUNDS) {
-      throw new InternalServerErrorException('Invalid SALT_ROUNDS')
+      throw new AppError('InternalServerError', 'Invalid SALT_ROUNDS')
     }
 
     const hashedPassword = await bcrypt.hash(password, parseInt(SALT_ROUNDS))

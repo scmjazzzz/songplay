@@ -9,7 +9,6 @@ import { UserModule } from './modules/user/user.module'
 import { PrismaModule } from './prisma/prisma.module'
 import { AuthModule } from './modules/auth/auth.module'
 import { TransactionModule } from './shared/modules/transaction.module'
-import { NullTo204Interceptor } from './shared/interceptors/null-to-204.interceptor'
 
 @Module({
   imports: [
@@ -26,12 +25,6 @@ import { NullTo204Interceptor } from './shared/interceptors/null-to-204.intercep
     AuthModule,
     UserModule,
   ],
-  providers: [
-    { provide: APP_PIPE, useClass: ZodValidationPipe },
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: NullTo204Interceptor,
-    },
-  ],
+  providers: [{ provide: APP_PIPE, useClass: ZodValidationPipe }],
 })
 export class AppModule {}
