@@ -1,9 +1,8 @@
-import { Controller, Get, Res, UseGuards } from '@nestjs/common'
+import { Controller, Get, HttpCode, Res, UseGuards } from '@nestjs/common'
 import { UserService } from './user.service'
 import { AuthGuard } from '../auth/auth.guard'
 import { User } from '@/shared/decorators/user.decorator'
 import { UserDto } from '@/shared/dtos/user.dto'
-import { Response } from 'express'
 
 @Controller('user')
 export class UserController {
@@ -11,7 +10,7 @@ export class UserController {
 
   @Get('me')
   @UseGuards(AuthGuard)
-  async me(@User() user: UserDto | null, @Res() response: Response) {
-    return response.json(user)
+  async me(@User() user: UserDto | null) {
+    return user
   }
 }

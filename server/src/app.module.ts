@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
-import { APP_PIPE } from '@nestjs/core'
+import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
 import { ZodValidationPipe } from 'nestjs-zod'
 import { ENV_JWT_SECRET_KEY } from './shared/constants/env'
 
@@ -9,6 +9,7 @@ import { UserModule } from './modules/user/user.module'
 import { PrismaModule } from './prisma/prisma.module'
 import { AuthModule } from './modules/auth/auth.module'
 import { TransactionModule } from './shared/modules/transaction.module'
+import { NullTo204Interceptor } from './shared/interceptors/null-to-204.interceptor'
 
 @Module({
   imports: [
@@ -25,6 +26,12 @@ import { TransactionModule } from './shared/modules/transaction.module'
     AuthModule,
     UserModule,
   ],
-  providers: [{ provide: APP_PIPE, useClass: ZodValidationPipe }],
+  providers: [
+    { provide: APP_PIPE, useClass: ZodValidationPipe },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: NullTo204Interceptor,
+    },
+  ],
 })
 export class AppModule {}
