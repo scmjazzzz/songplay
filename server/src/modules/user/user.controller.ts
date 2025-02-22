@@ -4,7 +4,7 @@ import { AuthGuard } from '../auth/auth.guard'
 import { User } from '@/shared/decorators/user.decorator'
 import { UserDto } from '@/shared/dtos/user.dto'
 import { ChangePasswordDto } from './dtos'
-import { userResponseSchema } from '@/shared/schemas/user.schema'
+import { userSchema } from '@/shared/schemas/user.schema'
 
 @Controller('user')
 export class UserController {
@@ -13,7 +13,7 @@ export class UserController {
   @Get('me')
   @UseGuards(AuthGuard)
   async me(@User('optional') user: UserDto | null) {
-    return user ? userResponseSchema.parse({ user }) : { user: null }
+    return { user: user ? userSchema.parse(user) : null }
   }
 
   @Patch('change-password')

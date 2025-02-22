@@ -5,8 +5,4 @@ export const userSchema = z.object({
   username: z.string(),
 })
 
-export const userResponseSchema = z.object({
-  user: userSchema,
-})
-
 export type UserSchema = z.infer<typeof userSchema>

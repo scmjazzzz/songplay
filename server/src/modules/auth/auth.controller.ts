@@ -14,7 +14,7 @@ export class AuthController {
     const { user, tokens } = await this.authService.register({ username, password })
 
     setTokenCookie(response, tokens)
-    return response.json(user)
+    return response.json({ user })
   }
 
   @Post('login')
@@ -22,7 +22,7 @@ export class AuthController {
     const { user, tokens } = await this.authService.login({ username, password })
 
     setTokenCookie(response, tokens)
-    return response.json(user)
+    return response.json({ user })
   }
 
   @Post('refresh')
@@ -31,9 +31,9 @@ export class AuthController {
   async refresh(@Req() request: Request, @Res() response: Response) {
     const refreshToken = (request.cookies['refresh_token'] as string) ?? ''
     const tokens = await this.authService.refreshToken(refreshToken)
-    setTokenCookie(response, tokens)
 
-    return response.json(null)
+    setTokenCookie(response, tokens)
+    return response.send()
   }
 
   @Post('logout')
@@ -41,7 +41,6 @@ export class AuthController {
   @UseGuards(AuthGuard)
   async logout(@Res() response: Response) {
     clearTokenCookie(response)
-
-    return response.json(null)
+    return response.send()
   }
 }
