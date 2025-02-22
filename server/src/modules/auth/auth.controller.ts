@@ -1,8 +1,8 @@
-import { Body, Controller, Post, Res } from '@nestjs/common'
+import { Body, Controller, HttpCode, Post, Req, Res } from '@nestjs/common'
 import { AuthService } from './auth.service'
 import { LoginDto, RegisterDto } from './dtos'
 import { setTokenCookie } from '@/shared/lib/token-cookie'
-import { Response } from 'express'
+import { Request, Response } from 'express'
 
 @Controller('auth')
 export class AuthController {
@@ -22,5 +22,15 @@ export class AuthController {
 
     setTokenCookie(response, tokens)
     return response.json(user)
+  }
+
+  @Post('refresh')
+  @HttpCode(204)
+  async refresh(@Req() request: Request, @Res() response: Response) {
+    const refreshToken = (request.cookies['refresh_token'] as string) ?? ''
+    const tokens = await this.authService.refreshToken(refreshToken)
+    setTokenCookie(response, tokens)
+
+    return response.json(null)
   }
 }

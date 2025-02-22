@@ -15,6 +15,11 @@ export const refreshTokenSchema = z.object({
   exp: z.number(),
 })
 
+export const tokensSchema = z.object({
+  accessToken: z.string(),
+  refreshToken: z.string(),
+})
+
 export type AccessTokenSchema = z.infer<typeof accessTokenSchema>
 
 export type RefreshTokenSchema = z.infer<typeof refreshTokenSchema>

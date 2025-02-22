@@ -39,7 +39,7 @@ export class AuthGuard implements CanActivate {
     const decoded = this.verifyToken(accessToken)
 
     request.user = {
-      id: decoded.id,
+      id: decoded.userId,
       username: decoded.username,
     }
 
