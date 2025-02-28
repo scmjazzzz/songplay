@@ -22,6 +22,7 @@ export const responsiveProperties = defineProperties({
     },
     height: {
       full: '100%',
+      screen: '100vh',
     },
     minHeight: {
       screen: '100vh',
