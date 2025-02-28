@@ -12,8 +12,10 @@ export const responsiveProperties = defineProperties({
   properties: {
     alignItems: ['center'],
     justifyContent: ['center'],
+    flexDirection: ['column'],
+    flex: [1],
     display: ['flex'],
-    position: ['fixed', 'absolute'],
+    position: ['fixed', 'absolute', 'sticky'],
     textAlign: ['center', 'left', 'right'],
     width: {
       full: '100%',
