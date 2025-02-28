@@ -2,9 +2,12 @@ import { Text } from '@/shared/components/text'
 import { header, side } from './mobile-header.css'
 import { blind } from '@/styles/styles.css'
 
-export type Props =
-  | { title: string; blindTitle?: never; left?: React.ReactNode; right?: React.ReactNode }
-  | { title?: never; blindTitle?: string; left?: React.ReactNode; right?: React.ReactNode }
+export type Props = {
+  title?: string
+  blindTitle?: string
+  left?: React.ReactNode
+  right?: React.ReactNode
+}
 
 export function MobileHeader({ title = 'songplay', blindTitle, left, right }: Props) {
   return (
