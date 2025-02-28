@@ -15,9 +15,11 @@ const variant = {
 
 const base = {
   light: {
+    default_text: light.gray_900,
     default_background: light.gray_00,
   },
   dark: {
+    default_text: dark.gray_900,
     default_background: dark.gray_200,
   },
 }
