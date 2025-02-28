@@ -8,10 +8,8 @@ export const header = style([
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'fixed',
+    position: 'sticky',
     top: 0,
-    left: 0,
-    width: 'full',
     backgroundColor: 'default_background',
   }),
   {
