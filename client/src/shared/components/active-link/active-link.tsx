@@ -1,12 +1,11 @@
 'use client'
 
-import type { ReactNode } from 'react'
 import { usePathname } from 'next/navigation'
 import { Link, type Props as LinkProps } from '../link'
 
 type Props = Omit<LinkProps, 'className' | 'children'> & {
   className?: string | ((props: { isActive: boolean }) => string)
-  children?: ReactNode | ((props: { isActive: boolean }) => ReactNode)
+  children?: React.ReactNode | ((props: { isActive: boolean }) => React.ReactNode)
 }
 
 export function ActiveLink({ href, className, children, ...props }: Props) {

@@ -1,11 +1,10 @@
-import type { ReactNode } from 'react'
 import { Text } from '@/shared/components/text'
 import { header, side } from './mobile-header.css'
 
 export type Props = {
   title?: string
-  left?: ReactNode
-  right?: ReactNode
+  left?: React.ReactNode
+  right?: React.ReactNode
 }
 
 export function MobileHeader({ title = 'songplay', left, right }: Props) {
