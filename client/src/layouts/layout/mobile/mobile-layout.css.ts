@@ -8,4 +8,6 @@ export const container = sprinkles({
 
 export const main = sprinkles({
   flex: 1,
+  verticalPadding: 12,
+  backgroundColor: 'default_background',
 })

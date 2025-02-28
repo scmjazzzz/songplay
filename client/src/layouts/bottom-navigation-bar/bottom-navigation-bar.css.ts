@@ -8,9 +8,11 @@ export const nav = style([
     position: 'sticky',
     bottom: 0,
     backgroundColor: 'default_background',
+    boxSizing: 'content-box',
   }),
   {
     height: vars.base.bottom_navigation_bar_height,
+    borderTop: `${vars.base.mobile_layout_gap} solid ${vars.color.gray_100}`,
   },
 ])
 

@@ -17,6 +17,7 @@ export const responsiveProperties = defineProperties({
     display: ['flex'],
     position: ['fixed', 'absolute', 'sticky'],
     textAlign: ['center', 'left', 'right'],
+    boxSizing: ['content-box'],
     width: {
       full: '100%',
     },
