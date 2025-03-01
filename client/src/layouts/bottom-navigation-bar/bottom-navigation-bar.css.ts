@@ -5,8 +5,10 @@ import { vars } from '@/styles/vars.css'
 
 export const nav = style([
   sprinkles({
-    position: 'sticky',
+    position: 'fixed',
+    left: 0,
     bottom: 0,
+    width: 'full',
     backgroundColor: 'default_background',
     boxSizing: 'content-box',
   }),
