@@ -11,14 +11,16 @@ export const responsiveProperties = defineProperties({
   defaultCondition: 'mobile',
   properties: {
     alignItems: ['center'],
-    justifyContent: ['center'],
+    justifyContent: ['center', 'left', 'right'],
     flexDirection: ['column'],
     flex: [1],
-    display: ['flex'],
+    justifySelf: ['center'],
+    display: ['flex', 'grid'],
     position: ['fixed', 'absolute', 'sticky'],
     textAlign: ['center', 'left', 'right'],
     boxSizing: ['content-box'],
     borderStyle: ['solid'],
+    textDecoration: ['underline'],
     width: {
       full: '100%',
     },
