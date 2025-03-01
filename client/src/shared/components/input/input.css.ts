@@ -51,7 +51,7 @@ export const input = recipe({
     },
   ],
   defaultVariants: {
-    size: 'small',
+    size: 'medium',
     color: 'default',
     variant: 'outlined',
   },
