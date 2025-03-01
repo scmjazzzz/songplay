@@ -4,4 +4,6 @@ export const ROUTES = {
   SEARCH: '/search',
   WRITE: '/write',
   PROFILE: '/profile',
+  REGISTER: '/auth/register',
+  LOGIN: '/auth/login',
 } as const
