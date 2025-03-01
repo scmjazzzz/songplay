@@ -5,6 +5,9 @@ export const statusProperties = defineProperties({
   conditions: {
     default: {},
     hover: { '@media': '(hover: hover)', selector: '&:not(:disabled):hover' },
+    placeholder: { selector: '&::placeholder' },
+    disabled: { selector: '&:disabled' },
+    focus: { selector: '&:focus' },
   },
   defaultCondition: 'default',
   properties: {
