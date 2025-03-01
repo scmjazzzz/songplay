@@ -6,7 +6,7 @@ export default function DesktopRegisterPage() {
   return (
     <DesktopLayout title="회원가입">
       <Container variant="maxWidthForm" align="center" justify="center">
-        <RegisterForm />
+        <RegisterForm isMobile={false} />
       </Container>
     </DesktopLayout>
   )

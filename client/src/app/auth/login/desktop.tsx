@@ -6,7 +6,7 @@ export default function DesktopLoginPage() {
   return (
     <DesktopLayout title="로그인">
       <Container variant="maxWidthForm" align="center" justify="center">
-        <LoginForm />
+        <LoginForm isMobile={false} />
       </Container>
     </DesktopLayout>
   )
