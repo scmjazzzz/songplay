@@ -1,4 +1,4 @@
-import { isServerMobile } from '@/shared/utils'
+import { isServerMobile } from '@/shared/utils/is-server-mobile'
 import MobileLoginPage from './mobile'
 import DesktopLoginPage from './desktop'
 
