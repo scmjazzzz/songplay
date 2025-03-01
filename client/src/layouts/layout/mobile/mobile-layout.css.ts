@@ -1,6 +1,5 @@
 import { sprinkles } from '@/styles/sprinkles'
 import { vars } from '@/styles/vars.css'
-import { style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 
 export const container = recipe({
