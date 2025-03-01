@@ -6,9 +6,9 @@ export type Props = (MobileHeaderProps & { isHeader?: true }) | { isHeader?: fal
 
 export function BottomNavigationLayout({ isHeader = true, children, ...props }: React.PropsWithChildren<Props>) {
   return (
-    <div className={container}>
+    <div className={container({ isHeader, layout: 'bottomNavigation' })}>
       {isHeader && <MobileHeader {...props} />}
-      <main className={main}>{children}</main>
+      <main className={main({ isHeader, layout: 'bottomNavigation' })}>{children}</main>
       <BottomNavigationBar />
     </div>
   )

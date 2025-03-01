@@ -5,9 +5,9 @@ export type Props = Omit<MobileHeaderProps, 'left'>
 
 export function BackNavigationLayout({ children, ...props }: React.PropsWithChildren<Props>) {
   return (
-    <div className={container}>
+    <div className={container({ layout: 'backNavigation' })}>
       <MobileHeader left={<HeaderBackButton />} {...props} />
-      <main className={main}>{children}</main>
+      <main className={main({ layout: 'backNavigation' })}>{children}</main>
     </div>
   )
 }
