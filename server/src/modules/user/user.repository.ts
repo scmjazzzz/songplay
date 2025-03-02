@@ -20,4 +20,15 @@ export class UserRepository {
       },
     })
   }
+
+  async updatedPassword(userId: number, changePassword: string) {
+    await this.prismaService.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        password: changePassword,
+      },
+    })
+  }
 }

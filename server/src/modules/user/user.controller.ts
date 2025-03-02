@@ -1,10 +1,11 @@
 import { Response } from 'express'
-import { Controller, Delete, Get, HttpCode, Post, Res, UseGuards } from '@nestjs/common'
+import { Body, Controller, Delete, Get, HttpCode, Patch, Post, Res, UseGuards } from '@nestjs/common'
 import { UserService } from './user.service'
 import { AuthGuard } from '@/shared/guards/auth.guard'
 import { UserDto } from '@/shared/dtos/user.dto'
 import { NullableUser, RequiredUser } from '@/shared/decorators'
 import { clearTokenCookie } from '@/shared/lib/cookies/tokens'
+import { ChangePasswordDto } from './dtos'
 
 @Controller('user')
 export class UserController {
@@ -22,6 +23,13 @@ export class UserController {
   async logout(@Res() response: Response) {
     clearTokenCookie(response)
     return response.send()
+  }
+
+  @Patch('change-password')
+  @UseGuards(AuthGuard)
+  @HttpCode(204)
+  async changePassword(@RequiredUser() user: UserDto, @Body() { currentPassword, changePassword }: ChangePasswordDto) {
+    await this.userService.changePassword({ currentPassword, changePassword, userId: user.id })
   }
 
   @Delete('unregister')
