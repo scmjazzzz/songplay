@@ -1,9 +1,9 @@
 import { BadRequestException, HttpException } from '@nestjs/common'
 
 const appErrors = {
-  MissingEnv: {
+  InvalidEnv: {
     error: BadRequestException,
-    message: `Missing required environment variable`,
+    message: `Invalid environment variable`,
   },
 } as const
 

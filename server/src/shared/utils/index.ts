@@ -1,1 +1,1 @@
-export * from './find-missing-envs'
+export * from './find-invalid-envs'
