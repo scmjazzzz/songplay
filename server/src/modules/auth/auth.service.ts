@@ -6,6 +6,7 @@ import { ExceptionError } from '@/shared/lib/errors/exception'
 import { ConfigService } from '@nestjs/config'
 import { ENV_SALT_ROUNDS } from '@/shared/constants/env'
 import { AppError } from '@/shared/lib/errors'
+import { userSchema } from '@/shared/schemas/user.schema'
 
 @Injectable()
 export class AuthService {
@@ -31,7 +32,7 @@ export class AuthService {
 
     const user = await this.authRepository.createUser({ username, password: hashedPassword })
 
-    return user
+    return userSchema.parse(user)
   }
 
   async login({ username, password }: LoginDto) {
@@ -46,6 +47,6 @@ export class AuthService {
       throw new ExceptionError('Unauthorized', 'Invalid username or password')
     }
 
-    return user
+    return userSchema.parse(user)
   }
 }
