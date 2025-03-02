@@ -19,7 +19,7 @@ export class AppError extends HttpException {
 
   private static formatMessage(message: string | string[] | undefined, appErrorMessage: string) {
     if (Array.isArray(message)) {
-      return message.map((msg) => `${appErrorMessage}${msg}`)
+      return message.map((msg) => `${appErrorMessage} ${msg}`)
     }
 
     return message ?? appErrorMessage
