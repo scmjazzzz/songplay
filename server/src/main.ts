@@ -4,6 +4,7 @@ import { ENV_CORS_ORIGIN, ENV_PORT } from './shared/constants/env'
 import { ConfigService } from '@nestjs/config'
 import { AppError } from './shared/lib/errors'
 import { findMissingEnvs } from './shared/utils'
+import { ZodValidationPipe } from 'nestjs-zod'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -14,6 +15,7 @@ async function bootstrap() {
     throw new AppError('MissingEnv', findMissingEnvs({ [ENV_PORT]: port, [ENV_CORS_ORIGIN]: origin }))
   }
 
+  app.useGlobalPipes(new ZodValidationPipe())
   app.setGlobalPrefix('api')
   app.enableCors({
     credentials: true,
