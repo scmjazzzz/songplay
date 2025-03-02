@@ -4,6 +4,7 @@ import { PrismaModule } from './prisma/prisma.module'
 import { AuthModule } from './modules/auth/auth.module'
 import { JwtModule } from '@nestjs/jwt'
 import { ENV_JWT_SECRET_KEY } from './shared/constants/env'
+import { UserModule } from './modules/user/user.module'
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ENV_JWT_SECRET_KEY } from './shared/constants/env'
     }),
     PrismaModule,
     AuthModule,
+    UserModule,
   ],
 })
 export class AppModule {}
