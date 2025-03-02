@@ -19,7 +19,6 @@ export class UserController {
 
   @Post('logout')
   @HttpCode(204)
-  @UseGuards(AuthGuard)
   async logout(@Res() response: Response) {
     clearTokenCookie(response)
     return response.send()
