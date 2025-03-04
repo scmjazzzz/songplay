@@ -1,5 +1,6 @@
 import { recipe, type RecipeVariants } from '@vanilla-extract/recipes'
 import { sprinkles } from '@/styles/sprinkles'
+import { keyframes, style } from '@vanilla-extract/css'
 
 export const button = recipe({
   base: [
@@ -48,5 +49,42 @@ export const button = recipe({
     mode: 'inline',
   },
 })
+
+const loadingKeyframe = keyframes({
+  '0%': { opacity: 0 },
+  '50%': { opacity: 0.8 },
+  '100%': { opacity: 0 },
+})
+
+export const loading = sprinkles({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 4,
+})
+
+export const dot = style([
+  sprinkles({
+    display: 'flex',
+    backgroundColor: 'white',
+    borderRadius: 'half',
+  }),
+  {
+    width: 8,
+    height: 8,
+    animation: `${loadingKeyframe} 1s infinite`,
+    selectors: {
+      '&:nth-child(1)': {
+        animationDelay: '0s',
+      },
+      '&:nth-child(2)': {
+        animationDelay: '.1s',
+      },
+      '&:nth-child(3)': {
+        animationDelay: '.2s',
+      },
+    },
+  },
+])
 
 export type ButtonVariants = NonNullable<RecipeVariants<typeof button>>
