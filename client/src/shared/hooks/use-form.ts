@@ -27,6 +27,7 @@ type UseForm<T> = {
 }
 
 export function useForm<T>({ mode = 'all', form }: UseForm<T>) {
+  const [globalError, setGlobalError] = useState<string | boolean>('')
   const [errors, setErrors] = useState<ErrorsType<T>>({})
   const errorRef = useRef<Partial<Record<keyof T, string | null>>>(errors)
 
@@ -136,6 +137,8 @@ export function useForm<T>({ mode = 'all', form }: UseForm<T>) {
     inputProps,
     errors,
     disabled,
+    globalError,
     handleSubmit,
+    setGlobalError,
   }
 }

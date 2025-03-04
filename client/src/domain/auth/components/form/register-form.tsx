@@ -5,12 +5,18 @@ import { Form } from '@/shared/components/form'
 import { TextField } from '@/shared/components/text-field'
 import { AuthAction } from './auth-action'
 import { useForm } from '@/shared/hooks/use-form'
-import { conditionalProps } from '@/shared/utils/conditional-props'
+import { conditionalValue } from '@/shared/utils/conditional-value'
+import { useRedirect } from '@/shared/hooks/use-redirect'
+import { useCreateUser } from '../../hooks/use-create-user'
 import { registerSchema, type RegisterSchema } from '../../schemas'
 
 type Props = {
   isMobile: boolean
 }
+
+const authError = {
+  duplcateUsername: '이미 존재하는 계정입니다.',
+} as const
 
 export function RegisterForm({ isMobile }: Props) {
   const { inputProps, disabled, errors, handleSubmit } = useForm<RegisterSchema>({
@@ -26,16 +32,31 @@ export function RegisterForm({ isMobile }: Props) {
     },
   })
 
-  const registerSubmit = handleSubmit({})
+  const goNextPage = useRedirect()
+  const { mutate, error, isPending, isSuccess } = useCreateUser()
+  const registerSubmit = handleSubmit({
+    onSuccess: (data) => {
+      mutate(data, {
+        onSuccess: () => goNextPage(),
+      })
+    },
+  })
 
   return (
     <Form
-      onSubmit={registerSubmit}
-      footer={<AuthAction mode="register" disabled={disabled} />}
-      {...conditionalProps(isMobile, {
+      {...conditionalValue(isMobile, {
         sx: { padding: 12 },
         mode: 'full',
       })}
+      onSubmit={registerSubmit}
+      footer={
+        <AuthAction
+          mode="register"
+          disabled={disabled || isPending || isSuccess}
+          isLoading={isPending || isSuccess}
+          errorMessage={conditionalValue(error?.statusCode === 409, authError.duplcateUsername)}
+        />
+      }
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <TextField
@@ -43,6 +64,7 @@ export function RegisterForm({ isMobile }: Props) {
           placeholder="아이디를 입력해 주세요."
           autoComplete="off"
           errorMessage={errors.username}
+          disabled={isPending || isSuccess}
           {...inputProps.username}
         />
         <TextField
@@ -51,6 +73,7 @@ export function RegisterForm({ isMobile }: Props) {
           placeholder="비밀번호를 입력해 주세요."
           autoComplete="off"
           errorMessage={errors.password}
+          disabled={isPending || isSuccess}
           {...inputProps.password}
         />
       </Box>
