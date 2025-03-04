@@ -8,6 +8,7 @@ type Props = {
   mode: 'register' | 'login'
   disabled?: boolean
   errorMessage?: string
+  isLoading?: boolean
 }
 
 const descriptionMap = {
@@ -25,7 +26,7 @@ const descriptionMap = {
   },
 }
 
-export function AuthAction({ mode, disabled, errorMessage }: Props) {
+export function AuthAction({ mode, disabled, errorMessage, isLoading }: Props) {
   const { actionName, question, questionLink, questionLinkName } = descriptionMap[mode]
 
   return (
@@ -35,7 +36,7 @@ export function AuthAction({ mode, disabled, errorMessage }: Props) {
           {errorMessage}
         </Text>
       )}
-      <Button type="submit" disabled={disabled} mode="full" size="large">
+      <Button type="submit" disabled={disabled} mode="full" size="large" isLoading={isLoading}>
         {actionName}
       </Button>
       <Text variant="textRegular3" color="default" align="center" sx={{ paddingTop: 20 }}>
