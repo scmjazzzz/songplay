@@ -1,5 +1,5 @@
 export type Error = {
-  error: string
-  message: string
+  name: string
+  errorMessage: string
   statusCode: number
 }
