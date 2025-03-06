@@ -1,10 +1,15 @@
 import { type NextRequest } from 'next/server'
-import { rootRedirectMiddleware } from '@/middlewares'
+import { rootRedirectMiddleware, setDeviceTypeMiddleware } from '@/middlewares'
 
 export async function middleware(request: NextRequest) {
+  const deviceResponse = setDeviceTypeMiddleware(request)
   const rootRedirectResponse = rootRedirectMiddleware(request)
 
-  return rootRedirectResponse
+  if (rootRedirectResponse) {
+    return rootRedirectResponse
+  }
+
+  return deviceResponse
 }
 
 export const config = {
