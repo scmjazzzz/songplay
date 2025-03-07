@@ -86,6 +86,9 @@ export const palette = {
     black_alpha_500: '#00000080',
     white_alpha_200: '#fff3',
     white_alpha_800: '#fffc',
+    orange_alpha_50: '#ff6f0f0d',
+    orange_alpha_100: '#ff6f0f24',
+    orange_alpha_200: '#ff6f0f33',
   },
   dark: {
     blue_100: '#202742',
@@ -166,5 +169,8 @@ export const palette = {
     black_alpha_500: '#00000080',
     white_alpha_200: '#fff3',
     white_alpha_800: '#fffc',
+    orange_alpha_50: '#ff6e1d14',
+    orange_alpha_100: '#ff6e1d24',
+    orange_alpha_200: '#ff6e1d33',
   },
 }

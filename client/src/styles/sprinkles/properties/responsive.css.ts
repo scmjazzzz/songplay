@@ -14,13 +14,14 @@ export const responsiveProperties = defineProperties({
     alignItems: ['center'],
     justifyContent: ['center'],
     flexDirection: ['column'],
-    position: ['fixed', 'absolute'],
+    position: ['fixed', 'absolute', 'sticky'],
     textAlign: ['left', 'center', 'right'],
     width: {
       full: '100%',
     },
     height: {
       full: '100%',
+      screen: '100vh',
     },
     flex: [1],
     boxSizing: ['content-box'],
