@@ -25,6 +25,7 @@ export const responsiveProperties = defineProperties({
     },
     flex: [1],
     boxSizing: ['content-box'],
+    borderStyle: ['solid'],
     gap: vars.space,
     top: vars.space,
     bottom: vars.space,

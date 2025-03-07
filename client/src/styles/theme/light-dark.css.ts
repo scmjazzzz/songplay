@@ -1,9 +1,9 @@
 import { createGlobalTheme, createGlobalThemeContract } from '@vanilla-extract/css'
-import { palette, foreground, background } from '../tokens'
+import { palette, foreground, background, stroke } from '../tokens'
 import { transformVariableName } from './utils'
 
 const color = (mode: 'light' | 'dark') => ({
-  color: { ...palette[mode], ...foreground[mode], ...background[mode] },
+  color: { ...palette[mode], ...foreground[mode], ...background[mode], ...stroke[mode] },
 })
 
 export const colorVars = createGlobalThemeContract(color('light'), (_, path) => transformVariableName(path))
