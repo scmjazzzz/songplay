@@ -23,6 +23,7 @@ export const responsiveProperties = defineProperties({
       full: '100%',
     },
     flex: [1],
+    boxSizing: ['content-box'],
     gap: vars.space,
     top: vars.space,
     bottom: vars.space,

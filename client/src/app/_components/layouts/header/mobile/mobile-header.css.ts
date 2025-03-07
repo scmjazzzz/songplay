@@ -13,9 +13,11 @@ export const header = style([
     left: 0,
     width: 'full',
     backgroundColor: 'background_default',
+    boxSizing: 'content-box',
   }),
   {
     height: vars.base.mobile_header_height,
+    borderBottom: `${vars.base.mobile_layout_gap} solid ${vars.color.background_base}`,
   },
 ])
 
