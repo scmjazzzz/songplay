@@ -4,6 +4,7 @@ import { ZodValidationPipe } from 'nestjs-zod'
 import { AppModule } from './app.module'
 import { ENV_CORS_ORIGIN, ENV_PORT } from './shared/constants/env'
 import { AppError } from './shared/lib/errors'
+import { HttpExceptionFilter } from './shared/filters/http-exception.filter'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -18,6 +19,7 @@ async function bootstrap() {
   }
 
   app.useGlobalPipes(new ZodValidationPipe())
+  app.useGlobalFilters(new HttpExceptionFilter())
   app.setGlobalPrefix('api')
   app.enableCors({
     credentials: true,
