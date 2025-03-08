@@ -11,6 +11,6 @@ export const stroke = {
   dark: {
     stroke_default: dark.gray_500,
     stroke_danger: dark.red_100,
-    stroke_default_focus: dark.gray_600,
+    stroke_default_focus: dark.gray_700,
   },
 }
