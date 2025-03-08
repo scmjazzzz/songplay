@@ -21,6 +21,6 @@ async function bootstrap() {
     credentials: true,
     origin,
   })
-  await app.listen(3000)
+  await app.listen(port)
 }
 bootstrap()
