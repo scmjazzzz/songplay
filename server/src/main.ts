@@ -1,6 +1,7 @@
+import * as cookieParser from 'cookie-parser'
+import { ZodValidationPipe } from 'nestjs-zod'
 import { NestFactory } from '@nestjs/core'
 import { ConfigService } from '@nestjs/config'
-import { ZodValidationPipe } from 'nestjs-zod'
 import { AppModule } from './app.module'
 import { ENV_CORS_ORIGIN, ENV_PORT } from './shared/constants/env'
 import { AppError } from './shared/lib/errors'
@@ -18,6 +19,7 @@ async function bootstrap() {
     throw new AppError('InvalidEnv', ENV_CORS_ORIGIN)
   }
 
+  app.use(cookieParser())
   app.useGlobalPipes(new ZodValidationPipe())
   app.useGlobalFilters(new HttpExceptionFilter())
   app.setGlobalPrefix('api')
