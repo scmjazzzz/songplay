@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { Body, Controller, HttpCode, Post, Req, Res } from '@nestjs/common'
-import { setTokenCookie } from '@/shared/lib/cookies/tokens'
+import { setTokenCookie } from '@/shared/lib/cookies'
 import { AuthService } from './auth.service'
 import { LoginDto, RegisterDto } from './dtos'
 
