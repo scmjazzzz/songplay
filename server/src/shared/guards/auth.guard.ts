@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     const accessToken = this.extractAccessToken(request)
 
     if (!accessToken) {
-      throw new ExceptionError('Unauthorized', 'Invalid token')
+      throw new ExceptionError('Unauthorized', 'Invalid access token')
     }
 
     try {
@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
         username: decoded.username,
       }
     } catch (error) {
-      throw new ExceptionError('Unauthorized', 'Invalid token')
+      throw new ExceptionError('Unauthorized', 'Invalid access token')
     }
 
     return true
