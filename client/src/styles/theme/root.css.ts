@@ -1,8 +1,9 @@
 import { createGlobalTheme, createGlobalThemeContract } from '@vanilla-extract/css'
-import { border, space, typography } from '../tokens'
+import { border, space, typography, base } from '../tokens'
 import { transformVariableName } from './utils'
 
 const rootTokens = {
+  base,
   space,
   border,
   typography,
