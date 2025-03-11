@@ -20,6 +20,7 @@ export const responsiveProperties = defineProperties({
       full: '100%',
     },
     textAlign: ['left', 'center', 'right'],
+    borderStyle: ['solid'],
     gap: vars.space,
     top: vars.space,
     bottom: vars.space,
