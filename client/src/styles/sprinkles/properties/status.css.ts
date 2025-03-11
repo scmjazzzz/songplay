@@ -4,6 +4,8 @@ import { vars } from '@/styles/vars.css'
 export const statusProperties = defineProperties({
   conditions: {
     default: {},
+    hover: { '@media': '(hover: hover)', selector: '&:not(:disabled):hover' },
+    disabled: { selector: '&:disabled' },
   },
   defaultCondition: 'default',
   properties: {
