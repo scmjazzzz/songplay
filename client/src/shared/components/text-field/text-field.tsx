@@ -1,6 +1,6 @@
+import { useId } from 'react'
 import { Input, type Props as InputProps } from '../input'
 import { Text } from '../text'
-import { randomId } from '@/shared/utils/random-id'
 import { container, heading } from './text-field.css'
 
 type Props = InputProps & {
@@ -9,7 +9,8 @@ type Props = InputProps & {
 }
 
 export function TextField({ label, id, errorMessage, ...props }: Props) {
-  const fieldId = id || randomId()
+  const createdId = useId()
+  const fieldId = id || `text-field-${createdId}`
 
   return (
     <div className={container}>
