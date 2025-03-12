@@ -26,6 +26,7 @@ export const responsiveProperties = defineProperties({
     },
     textAlign: ['left', 'center', 'right'],
     borderStyle: ['solid'],
+    boxSizing: ['content-box'],
     gap: vars.space,
     top: vars.space,
     bottom: vars.space,
