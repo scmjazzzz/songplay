@@ -10,6 +10,7 @@ export const background = {
     background_danger: light.red_700,
     background_base: light.gray_200,
     background_default: light.gray_00,
+    background_default_hover: light.orange_100,
     background_default_disabled: light.gray_200,
   },
   dark: {
@@ -19,6 +20,7 @@ export const background = {
     background_danger: dark.red_600,
     background_base: dark.gray_00,
     background_default: dark.gray_300,
+    background_default_hover: dark.orange_alpha_100,
     background_default_disabled: dark.gray_00,
   },
 }

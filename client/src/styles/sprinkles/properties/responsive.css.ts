@@ -10,7 +10,7 @@ export const responsiveProperties = defineProperties({
   },
   defaultCondition: 'mobile',
   properties: {
-    position: ['fixed', 'absolute'],
+    position: ['fixed', 'absolute', 'sticky'],
     display: ['flex'],
     alignItems: ['center'],
     justifyContent: ['center'],
@@ -18,9 +18,11 @@ export const responsiveProperties = defineProperties({
     flex: [1],
     width: {
       full: '100%',
+      screen: '100vw',
     },
     height: {
       full: '100%',
+      screen: '100vh',
     },
     textAlign: ['left', 'center', 'right'],
     borderStyle: ['solid'],
