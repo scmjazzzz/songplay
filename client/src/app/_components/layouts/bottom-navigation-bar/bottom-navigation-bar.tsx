@@ -5,7 +5,7 @@ import { Feed, Profile, Search, Shorts, Write } from '@/shared/components/icon'
 import { ActiveLink } from '@/shared/components/active-link'
 import { Text } from '@/shared/components/text'
 import { ROUTES } from '@/shared/constants/routes'
-import { randomId } from '@/shared/utils'
+import { randomId } from '@/shared/utils/random-id'
 import { li, link, nav, svg, text, ul } from './bottom-navigation-bar.css'
 
 export function BottomNavigationBar() {

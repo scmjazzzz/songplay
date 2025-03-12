@@ -5,7 +5,7 @@ import { Text } from '@/shared/components/text'
 import { ActiveLink } from '@/shared/components/active-link'
 import { Feed, Search, Shorts, Write } from '@/shared/components/icon'
 import { ROUTES } from '@/shared/constants/routes'
-import { randomId } from '@/shared/utils'
+import { randomId } from '@/shared/utils/random-id'
 import { nav, li, svg, ul, text, link } from './aisde-gnb.css'
 
 const gnbList = [
