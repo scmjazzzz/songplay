@@ -1,5 +1,6 @@
 import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
+import { ZodValidationPipe } from 'nestjs-zod'
 import { AppModule } from './app.module'
 import { ENV_CORS_ORIGIN, ENV_PORT } from './shared/constants/env'
 import { AppError } from './shared/lib/errors'
@@ -16,6 +17,7 @@ async function bootstrap() {
     throw new AppError('InvalidEnv', ENV_CORS_ORIGIN)
   }
 
+  app.useGlobalPipes(new ZodValidationPipe())
   app.setGlobalPrefix('api')
   app.enableCors({
     credentials: true,
