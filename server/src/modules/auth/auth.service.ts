@@ -2,12 +2,13 @@ import * as bcrypt from 'bcrypt'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
-import { Prisma, User } from '@prisma/client'
+import { Prisma, Token, User } from '@prisma/client'
 import { PrismaService } from '@/prisma/prisma.service'
 import { AppError, ExceptionError } from '@/shared/lib/errors'
 import { ENV_SALT_ROUNDS } from '@/shared/constants/env'
 import { userSchema } from '@/shared/schemas/user.schema'
 import { ACCESS_TOKEN_EXPIRES_IN, REFRESH_TOKEN_EXPIRES_IN } from '@/shared/constants/token'
+import { RefreshTokenSchema } from '@/shared/schemas/tokens.schema'
 import { AuthRepository } from './auth.repository'
 import { LoginDto, RegisterDto } from './dtos'
 
@@ -20,9 +21,9 @@ export class AuthService {
     private readonly prismaService: PrismaService,
   ) {}
 
-  async createTokens({ user, tx }: { user: User; tx?: Prisma.TransactionClient }) {
+  async createTokens({ user, tx, token }: { user: User; token?: Token; tx?: Prisma.TransactionClient }) {
     const { id: userId, username } = user
-    const { id: tokenId, rotationCount } = await this.authRepository.createToken(userId, tx)
+    const { id: tokenId, rotationCount } = token ?? (await this.authRepository.createToken(userId, tx))
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(
         {
@@ -88,5 +89,41 @@ export class AuthService {
       user: userSchema.parse(user),
       tokens,
     }
+  }
+
+  async refreshToken(refreshToken?: string) {
+    if (!refreshToken) {
+      throw new ExceptionError('Unauthorized', 'Invalid refresh token')
+    }
+
+    const decoded = await this.jwtService.verifyAsync<RefreshTokenSchema>(refreshToken).catch(() => {
+      throw new ExceptionError('Unauthorized', 'Invalid refresh token')
+    })
+
+    const token = await this.authRepository.getToken(decoded.id)
+
+    if (!token) {
+      throw new ExceptionError('Unauthorized', 'Invalid authentication credentials')
+    }
+
+    if (token.blocked) {
+      throw new ExceptionError('Unauthorized', 'Token is blocked')
+    }
+
+    if (token.rotationCount !== decoded.rotationCount) {
+      await this.authRepository.updateToken({ id: decoded.id, blocked: true })
+      throw new ExceptionError('Unauthorized', 'Rotation count does not match')
+    }
+
+    return this.prismaService.$transaction(async (tx) => {
+      const updatedToken = await this.authRepository.updateToken({
+        id: decoded.id,
+        rotationCount: token.rotationCount + 1,
+        tx,
+      })
+      const tokens = await this.createTokens({ user: updatedToken.user, token: updatedToken, tx })
+
+      return tokens
+    })
   }
 }

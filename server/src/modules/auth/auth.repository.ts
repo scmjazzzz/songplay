@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { Prisma } from '@prisma/client'
+import { Prisma, Token } from '@prisma/client'
 import { PrismaService } from '@/prisma/prisma.service'
 import { RegisterDto } from './dtos'
 
@@ -36,5 +36,37 @@ export class AuthRepository {
     })
 
     return user
+  }
+
+  async getToken(tokenId: number) {
+    const token = await this.prismaService.token.findUnique({
+      where: {
+        id: tokenId,
+      },
+    })
+
+    return token
+  }
+
+  async updateToken({
+    id,
+    blocked,
+    rotationCount,
+    tx,
+  }: Pick<Partial<Token>, 'blocked' | 'rotationCount' | 'id'> & { tx?: Prisma.TransactionClient }) {
+    const token = this.prismaService.getClient(tx).token.update({
+      where: {
+        id,
+      },
+      data: {
+        blocked,
+        rotationCount,
+      },
+      include: {
+        user: true,
+      },
+    })
+
+    return token
   }
 }
