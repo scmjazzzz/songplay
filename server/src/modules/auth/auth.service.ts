@@ -2,7 +2,8 @@ import * as bcrypt from 'bcrypt'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
-import { User } from '@prisma/client'
+import { Prisma, User } from '@prisma/client'
+import { PrismaService } from '@/prisma/prisma.service'
 import { AppError, ExceptionError } from '@/shared/lib/errors'
 import { ENV_SALT_ROUNDS } from '@/shared/constants/env'
 import { userSchema } from '@/shared/schemas/user.schema'
@@ -16,11 +17,12 @@ export class AuthService {
     private readonly authRepository: AuthRepository,
     private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
+    private readonly prismaService: PrismaService,
   ) {}
 
-  async createTokens(user: User) {
+  async createTokens({ user, tx }: { user: User; tx?: Prisma.TransactionClient }) {
     const { id: userId, username } = user
-    const { id: tokenId, rotationCount } = await this.authRepository.createToken(userId)
+    const { id: tokenId, rotationCount } = await this.authRepository.createToken(userId, tx)
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(
         {
@@ -57,13 +59,15 @@ export class AuthService {
 
     const hashedPassword = await bcrypt.hash(password, parseInt(SALT_ROUNDS))
 
-    const user = await this.authRepository.createUser({ username, password: hashedPassword })
-    const tokens = await this.createTokens(user)
+    return this.prismaService.$transaction(async (tx) => {
+      const user = await this.authRepository.createUser({ username, password: hashedPassword, tx })
+      const tokens = await this.createTokens({ user, tx })
 
-    return {
-      user: userSchema.parse(user),
-      tokens,
-    }
+      return {
+        user: userSchema.parse(user),
+        tokens,
+      }
+    })
   }
 
   async login({ username, password }: LoginDto) {
@@ -78,7 +82,7 @@ export class AuthService {
       throw new ExceptionError('Unauthorized', 'Invalid username or password')
     }
 
-    const tokens = await this.createTokens(user)
+    const tokens = await this.createTokens({ user })
 
     return {
       user: userSchema.parse(user),
