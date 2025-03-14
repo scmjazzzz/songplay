@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config'
 import { JwtModule } from '@nestjs/jwt'
 import { PrismaModule } from './prisma/prisma.module'
 import { AuthModule } from './modules/auth/auth.module'
+import { UserModule } from './modules/user/user.module'
 import { LoggerMiddleware } from './shared/middlewares/logger.middleware'
 import { ENV_JWT_SECRET_KEY } from './shared/constants/env'
 
@@ -18,6 +19,7 @@ import { ENV_JWT_SECRET_KEY } from './shared/constants/env'
     }),
     PrismaModule,
     AuthModule,
+    UserModule,
   ],
 })
 export class AppModule implements NestModule {
