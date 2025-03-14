@@ -12,6 +12,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
       message: string
       error?: string
       errors?: Record<string, any>[]
+      type?: string
     }
 
     const errorName = exception instanceof ZodValidationException ? 'BadRequest' : errorException.error
@@ -20,6 +21,9 @@ export class HttpExceptionFilter implements ExceptionFilter {
       name: errorName,
       statusCode: errorException.statusCode,
       message: errorException.message,
+      ...(errorException.type && {
+        type: errorException.type,
+      }),
     })
   }
 }
